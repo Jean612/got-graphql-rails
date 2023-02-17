@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.4"
+ruby "3.1.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
@@ -66,4 +66,15 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
+# https://github.com/jzntam/game_of_thrones_api
+#gem 'game_of_thrones_api'
+## https://github.com/spielhoelle/rick-and-morty-gem
+gem 'rickmorty'
+# https://graphql-ruby.org/getting_started
+gem "graphql"
+gem "graphiql-rails", group: :development
+# https://github.com/heartcombo/devise
+# https://github.com/heartcombo/devise/wiki/How-To:-Upgrade-to-Devise-4.9.0-%5BHotwire-Turbo-integration%5D
+gem 'devise', github: "heartcombo/devise", branch: "main"
 
