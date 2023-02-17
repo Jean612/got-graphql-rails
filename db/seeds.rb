@@ -5,3 +5,38 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+puts "Loading locations"
+
+locations = Rickmorty::Location.new
+locations.all.each do |location|
+  location = location.deep_symbolize_keys
+  Location.create(name: location[:name],
+                  location_type: location[:type],
+                  dimension: location[:dimension],
+                  url: location[:url])
+  puts "Location #{location[:name]} created"
+end
+
+puts "Loading characters"
+
+characters = Rickmorty::Character.new
+characters.all.each do |character|
+  character = character.deep_symbolize_keys
+  
+  location = Location.find_by(url: character[:location][:url]) unless character[:location][:url] == ""
+  origin = Location.find_by(url: character[:origin][:url]) unless character[:origin][:url] == ""
+  
+  Character.create(
+    name: character[:name],
+    status: character[:status],
+    species: character[:species],
+    character_type: character[:type],
+    gender: character[:gender],
+    image: character[:image],
+    url: character[:url],
+    location: location,
+    origin: origin,
+  )
+  puts "Character #{character[:name]} created"
+end
