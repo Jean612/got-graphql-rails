@@ -24,8 +24,8 @@ characters = Rickmorty::Character.new
 characters.all.each do |character|
   character = character.deep_symbolize_keys
   
-  location = Location.find_by(url: character[:location][:url]) unless character[:location][:url] == ""
-  origin = Location.find_by(url: character[:origin][:url]) unless character[:origin][:url] == ""
+  location = Location.find_by(url: character[:location][:url])
+  origin = Location.find_by(url: character[:origin][:url])
   
   Character.create(
     name: character[:name],
@@ -35,8 +35,8 @@ characters.all.each do |character|
     gender: character[:gender],
     image: character[:image],
     url: character[:url],
-    location: location,
-    origin: origin,
+    location: location || nil,
+    origin: origin || nil,
   )
   puts "Character #{character[:name]} created"
 end
