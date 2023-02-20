@@ -76,5 +76,5 @@ gem "graphql"
 gem "graphiql-rails", group: :development
 # https://github.com/heartcombo/devise
 # https://github.com/heartcombo/devise/wiki/How-To:-Upgrade-to-Devise-4.9.0-%5BHotwire-Turbo-integration%5D
-gem 'devise', github: "heartcombo/devise", branch: "main"
+gem 'devise'
 
